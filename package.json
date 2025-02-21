@@ -1,0 +1,16 @@
+{
+  "name": "seventeen-track",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsx --test --env-file-if-exists=.env test/**/*.spec.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "prettier": "^3.5.1",
+    "tsx": "^4.19.3"
+  }
+}
