@@ -32,20 +32,23 @@ export class Client {
     return cookies;
   }
 
-  // A helper function that mimics the fetch API for GAS
+  // A helper function that mimics the fetch API for both environments
   private async customFetch(
     url: string,
     options: RequestInit
   ): Promise<Response> {
-    // if native fetch exists use it
     if (typeof fetch !== "undefined") {
+      // In Node.js or other environments with native fetch
       return fetch(url, options);
-    } else {
-      // In Google App Script, use UrlFetchApp
+    } else if (
+      typeof UrlFetchApp !== "undefined" &&
+      typeof UrlFetchApp.fetch === "function"
+    ) {
+      // In Google App Script environment
       const resp = UrlFetchApp.fetch(url, {
         method: options.method
           ? (options.method.toLowerCase() as GoogleAppsScript.URL_Fetch.HttpMethod)
-          : undefined, // GAS expects lowercase method names
+          : undefined,
         headers: options.headers as { [key: string]: string },
         payload: options.body ?? undefined,
         muteHttpExceptions: true,
@@ -65,7 +68,6 @@ export class Client {
 
       const text = resp.getContentText();
 
-      // Return an object mimicking the Response interface
       return {
         ok: responseCode >= 200 && responseCode < 300,
         status: responseCode,
@@ -73,6 +75,9 @@ export class Client {
         text: async () => text,
         json: async () => JSON.parse(text),
       } as Response;
+    } else {
+      // Neither native fetch nor UrlFetchApp.fetch is available
+      throw new Error("No suitable fetch implementation available.");
     }
   }
 
