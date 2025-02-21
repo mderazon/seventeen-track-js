@@ -2,7 +2,7 @@ import { describe, it, before } from "node:test";
 import assert from "node:assert";
 import util from "util";
 const debuglog = util.debuglog("seventeen-track");
-import { Client } from "../src/client";
+import { Client } from "../src";
 
 const email = process.env.TEST_USER_EMAIL;
 const password = process.env.TEST_USER_PASSWORD;

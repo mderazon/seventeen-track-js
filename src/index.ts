@@ -27,7 +27,6 @@ export class Client {
         ? nameValue.split("=")
         : [nameValue, ""];
 
-      // *** KEY CHANGE: Only store specific cookies ***
       if (name && (name === "uid" || name === "_yq_rc_")) {
         cookies[name] = value || "";
       }
@@ -41,7 +40,6 @@ export class Client {
       "Content-Type": "application/json",
     };
 
-    // Add *only* our targeted cookies
     const relevantCookies = Object.entries(this.cookies)
       .map(([key, value]) => `${key}=${value}`)
       .join("; ");
@@ -58,10 +56,9 @@ export class Client {
       body: bodyData,
     });
 
-    // Target specific cookies for parsing and merging
     const setCookieHeader = response.headers.get("Set-Cookie");
     const parsedCookies = this.parseAndFilterCookies(setCookieHeader);
-    this.cookies = { ...this.cookies, ...parsedCookies }; // Merge
+    this.cookies = { ...this.cookies, ...parsedCookies };
 
     if (!response.ok) {
       const errorText = await response.text();
