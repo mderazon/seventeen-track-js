@@ -1,5 +1,7 @@
 # seventeen-track
 
+[![Build status](https://github.com/mderazon/seventeen-track-js/actions/workflows/node.js.yml/badge.svg)](https://github.com/mderazon/seventeen-track-js/actions) [![npm Version](https://badge.fury.io/js/@oncehub%2Frequest-migrations.svg)](https://badge.fury.io/js/@oncehub%2Frequest-migrations) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 > track packages with 17track.net
 
 This repository provides an **unofficial SDK** for interacting with 17track.net. **This project is not affiliated with 17track** and may break in the future as the API evolves.
