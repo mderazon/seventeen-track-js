@@ -1,12 +1,10 @@
 import { Profile } from "./profile";
 
 export class Client {
-  private session?: any;
   public profile: Profile;
   private cookies: { [key: string]: string } = {};
 
-  constructor(session?: any) {
-    this.session = session;
+  constructor() {
     this.profile = new Profile(this.request.bind(this));
   }
 
@@ -35,7 +33,6 @@ export class Client {
   }
 
   private async request(method: string, url: string, data?: any): Promise<any> {
-    const fetchMethod = this.session ?? fetch;
     const headers: { [key: string]: string } = {
       "Content-Type": "application/json",
     };
@@ -50,7 +47,7 @@ export class Client {
 
     let bodyData = data ? JSON.stringify(data) : undefined;
 
-    const response = await fetchMethod(url, {
+    const response = await fetch(url, {
       method: method.toUpperCase(),
       headers: headers,
       body: bodyData,

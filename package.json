@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
+    "build-gas": "rollup --config && node build-gas.js",
     "test": "tsx --test --env-file-if-exists=.env test/**/*.spec.ts"
   },
   "repository": {
@@ -25,8 +26,16 @@
   },
   "homepage": "https://github.com/yourusername/seventeen-track-js#readme",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@types/google-apps-script": "^1.0.96",
     "@types/node": "^22.13.4",
     "prettier": "^3.5.1",
+    "rollup": "^4.34.8",
+    "ts2gas": "^4.2.0",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3"
   }

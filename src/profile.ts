@@ -31,6 +31,7 @@ export class Profile {
     this.accountId = loginResp.Json.gid;
     return true;
   }
+
   async packages(
     packageState: number | string = "",
     showArchived: boolean = false,
@@ -74,6 +75,7 @@ export class Profile {
     }
     return packages;
   }
+
   async summary(
     showArchived: boolean = false
   ): Promise<Record<string, number>> {
@@ -92,6 +94,7 @@ export class Profile {
     }
     return results;
   }
+
   async addPackage(
     trackingNumber: string,
     friendlyName?: string
@@ -130,6 +133,7 @@ export class Profile {
       console.error("Unexpected error setting the friendly name", err);
     }
   }
+
   async setFriendlyName(
     internalId: string,
     friendlyName: string
@@ -145,6 +149,7 @@ export class Profile {
       throw new RequestError(`Non-zero status code in response: ${code}`);
     }
   }
+
   async archivePackage(trackingNumber: string): Promise<void> {
     const packages = await this.packages();
     const packageToArchive = packages.find(
