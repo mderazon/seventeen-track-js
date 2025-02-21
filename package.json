@@ -17,14 +17,16 @@
     "tracking",
     "sdk",
     "packages",
-    "logistics"
+    "logistics",
+    "gas",
+    "google-apps-script"
   ],
   "author": "Michael DeRazon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourusername/seventeen-track-js/issues"
+    "url": "https://github.com/mderazon/seventeen-track-js/issues"
   },
-  "homepage": "https://github.com/yourusername/seventeen-track-js#readme",
+  "homepage": "https://github.com/mderazon/seventeen-track-js#readme",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.26.9",
     "@babel/preset-env": "^7.26.9",

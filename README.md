@@ -4,7 +4,7 @@
 
 > track packages with 17track.net
 
-This repository provides an **unofficial SDK** for interacting with 17track.net. **This project is not affiliated with 17track** and may break in the future as the API evolves.
+This repository provides an **unofficial SDK** for interacting with 17track.net from Node.js, web, and Google Apps Scripts. **This project is not affiliated with 17track** and may break in the future as the API evolves.
 
 ## Usage Example
 
@@ -15,28 +15,24 @@ import { Client } from "seventeen-track";
 
 const client = new Client();
 
-async function main() {
-  // Log in with your credentials.
-  const loggedIn = await client.profile.login(
-    "your-email@example.com",
-    "your-password"
-  );
-  if (!loggedIn) {
-    console.error("Login failed");
-    return;
-  }
-  console.log(`Logged in as: ${client.profile.accountId}`);
-
-  // Fetch summary data.
-  const summary = await client.profile.summary();
-  console.log("Summary:", summary);
-
-  // Retrieve packages.
-  const packages = await client.profile.packages();
-  console.log("Packages:", packages);
+// Log in with your credentials.
+const loggedIn = await client.profile.login(
+  "your-email@example.com",
+  "your-password"
+);
+if (!loggedIn) {
+  console.error("Login failed");
+  return;
 }
+console.log(`Logged in as: ${client.profile.accountId}`);
 
-main();
+// Fetch summary data.
+const summary = await client.profile.summary();
+console.log("Summary:", summary);
+
+// Retrieve packages.
+const packages = await client.profile.packages();
+console.log("Packages:", packages);
 ```
 
 ### API
@@ -100,6 +96,32 @@ A package object contains the following properties:
 | packageType        | number | Identifier for the type of package.              |
 | status             | number | Numeric status code of the package.              |
 | trackingNumber     | string | Tracking number for the package.                 |
+
+## Supported Environments
+
+This library is designed to work in both Node.js / web environments that support native `fetch` **and** in Google Apps Script (GAS), which uses `UrlFetchApp.fetch`.
+
+In GAS, the library can be especially useful to fetch tracking numbers directly from Gmail emails and add them to 17track via the API.
+
+### Building for Google Apps Script
+
+The build process creates separate outputs for Node.js (or web) and GAS:
+
+Run:
+
+```sh
+npm run build-gas
+```
+
+This command uses Rollup (with ts2gas) to convert the TypeScript files to GAS-compatible JavaScript. The output file (`index.gs`) is placed in the `dist-gas` folder.
+
+For more information about targeting GAS, see [here](https://github.com/google/clasp/blob/master/docs/typescript.md).
+
+### Deploying to GAS
+
+To use the library in your GAS project, simply copy the `index.gs` file from the `dist-gas` folder into your GAS project.
+
+For more details on integrating libraries in GAS, refer to the [Google Apps Script Libraries documentation](https://developers.google.com/apps-script/guides/libraries).
 
 ## Development
 
