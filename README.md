@@ -1,6 +1,6 @@
 # seventeen-track
 
-[![Build status](https://github.com/mderazon/seventeen-track-js/actions/workflows/node.js.yml/badge.svg)](https://github.com/mderazon/seventeen-track-js/actions) [![npm Version](https://badge.fury.io/js/@oncehub%2Frequest-migrations.svg)](https://badge.fury.io/js/@oncehub%2Frequest-migrations) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build status](https://github.com/mderazon/seventeen-track-js/actions/workflows/node.js.yml/badge.svg)](https://github.com/mderazon/seventeen-track-js/actions) [![npm Version](https://badge.fury.io/js/seventeen-track.svg)](https://badge.fury.io/js/seventeen-track) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > track packages with 17track.net
 
