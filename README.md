@@ -21,8 +21,7 @@ const loggedIn = await client.profile.login(
   "your-password"
 );
 if (!loggedIn) {
-  console.error("Login failed");
-  return;
+  throw new Error("Login failed");
 }
 console.log(`Logged in as: ${client.profile.accountId}`);
 
