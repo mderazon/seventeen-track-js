@@ -4,7 +4,7 @@
 
 > track packages with 17track.net
 
-This repository provides an **unofficial SDK** for interacting with 17track.net from Node.js, web, and Google Apps Scripts. **This project is not affiliated with 17track** and may break in the future as the API evolves.
+This repository provides an **unofficial SDK** for interacting with 17track.net from Node.js or Google Apps Scripts. **This project is not affiliated with 17track** and may break in the future as the API evolves.
 
 ## Usage Example
 
@@ -99,9 +99,11 @@ A package object contains the following properties:
 
 ## Supported Environments
 
-This library is designed to work in both Node.js / web environments that support native `fetch` **and** in Google Apps Script (GAS), which uses `UrlFetchApp.fetch`.
+This library is designed to work in both Node.js / other environments that support native `fetch` **and** in Google Apps Script (GAS), which uses `UrlFetchApp.fetch`.
 
 In GAS, the library can be especially useful to fetch tracking numbers directly from Gmail emails and add them to 17track via the API.
+
+When used in a web environment, the 17track server's strict CORS policies block requests from unauthorized domains.
 
 ### Building for Google Apps Script
 
