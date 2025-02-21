@@ -1,5 +1,3 @@
-// src/client.ts
-import { Package, packageStatusMap } from "./package";
 import { Profile } from "./profile";
 
 export class Client {

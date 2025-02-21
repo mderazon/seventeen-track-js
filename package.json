@@ -1,16 +1,33 @@
 {
   "name": "seventeen-track",
   "version": "1.0.0",
-  "description": "",
+  "description": "An unofficial SDK for interacting with 17track.net to manage and track packages.",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --project tsconfig.build.json",
     "test": "tsx --test --env-file-if-exists=.env test/**/*.spec.ts"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mderazon/seventeen-track-js.git"
+  },
+  "keywords": [
+    "17track",
+    "tracking",
+    "sdk",
+    "packages",
+    "logistics"
+  ],
+  "author": "Michael DeRazon",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/seventeen-track-js/issues"
+  },
+  "homepage": "https://github.com/yourusername/seventeen-track-js#readme",
   "devDependencies": {
     "@types/node": "^22.13.4",
     "prettier": "^3.5.1",
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
   }
 }
