@@ -105,9 +105,7 @@ In GAS, the library can be especially useful to fetch tracking numbers directly 
 
 ### Building for Google Apps Script
 
-The build process creates separate outputs for Node.js (or web) and GAS:
-
-Run:
+To build for GAS, run:
 
 ```sh
 npm run build-gas
