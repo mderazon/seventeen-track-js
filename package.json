@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mderazon/seventeen-track-js.git"
+    "url": "git+https://github.com/mderazon/seventeen-track-js.git"
   },
   "keywords": [
     "17track",
