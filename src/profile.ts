@@ -173,4 +173,32 @@ export class Profile {
       throw new RequestError(`Non-zero status code in response: ${code}`);
     }
   }
+
+  async deletePackage(trackingNumber: string): Promise<void> {
+    const packages = await this.packages();
+    const packageToDelete = packages.find(
+      (p) => p.trackingNumber === trackingNumber
+    );
+    if (!packageToDelete) {
+      throw new InvalidTrackingNumberError(
+        `Package not found by tracking number: ${trackingNumber}`
+      );
+    }
+
+    const internalId = packageToDelete.id;
+    if (!internalId) {
+      throw new Error("Package Id is undefined, cannot delete");
+    }
+
+    const deleteResp = await this.request("post", API_URL_BUYER, {
+      version: "1.0",
+      method: "DelTrackNo",
+      param: { TrackInfoIds: [internalId] },
+    });
+
+    const code = deleteResp.Code;
+    if (code !== 0) {
+      throw new RequestError(`Non-zero status code in response: ${code}`);
+    }
+  }
 }

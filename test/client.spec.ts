@@ -42,4 +42,23 @@ describe("Seventeen Track Library Integration Tests", () => {
     );
     assert.strictEqual(loggedIn, false);
   });
+
+  it("should add and delete a package", async () => {
+    const trackingNumber = "TEST" + Date.now();
+    const friendlyName = "Test Package " + trackingNumber;
+
+    await client.profile.addPackage(trackingNumber, friendlyName);
+
+    let packages = await client.profile.packages();
+    const addedPkg = packages.find((p) => p.trackingNumber === trackingNumber);
+    assert.ok(addedPkg, "Added package not found");
+
+    await client.profile.deletePackage(trackingNumber);
+
+    packages = await client.profile.packages();
+    const deletedPkg = packages.find(
+      (p) => p.trackingNumber === trackingNumber
+    );
+    assert.strictEqual(deletedPkg, undefined, "Package was not deleted");
+  });
 });
