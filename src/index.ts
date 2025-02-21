@@ -43,13 +43,17 @@ export class Client {
     } else {
       // In Google App Script, use UrlFetchApp
       const resp = UrlFetchApp.fetch(url, {
-        method: options.method?.toLowerCase(), // GAS expects lowercase method names
+        method: options.method
+          ? (options.method.toLowerCase() as GoogleAppsScript.URL_Fetch.HttpMethod)
+          : undefined, // GAS expects lowercase method names
         headers: options.headers as { [key: string]: string },
-        payload: options.body,
+        payload: options.body ?? undefined,
         muteHttpExceptions: true,
       });
       const responseCode = resp.getResponseCode();
-      const headersObj = resp.getAllHeaders();
+      const headersObj = resp.getAllHeaders() as {
+        [key: string]: string | string[];
+      };
       const fakeHeaders = {
         get: (name: string): string | null => {
           const value = headersObj[name];
