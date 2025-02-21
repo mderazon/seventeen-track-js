@@ -2,7 +2,12 @@
   "name": "seventeen-track",
   "version": "1.0.0",
   "description": "An unofficial SDK for interacting with 17track.net to manage and track packages.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "build-gas": "rollup --config && node build-gas.js",
