@@ -51,6 +51,12 @@ export class Profile {
       sourcetype: 0,
     });
 
+    if (packagesResp.Code !== 0) {
+      throw new RequestError(
+        `Non-zero status code in response: ${packagesResp.Code}`
+      );
+    }
+
     const packages: Package[] = [];
     for (const packageData of packagesResp.Json || []) {
       let event: { [key: string]: any } = {};
