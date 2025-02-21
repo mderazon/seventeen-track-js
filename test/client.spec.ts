@@ -7,6 +7,13 @@ import { Client } from "../src";
 const email = process.env.TEST_USER_EMAIL;
 const password = process.env.TEST_USER_PASSWORD;
 
+if (!email) {
+  throw new Error("TEST_USER_EMAIL environment variable not set");
+}
+if (!password) {
+  throw new Error("TEST_USER_PASSWORD environment variable not set");
+}
+
 describe("Seventeen Track Library Integration Tests", () => {
   let client: Client;
 
